@@ -5,7 +5,6 @@
 [![Build Status](https://img.shields.io/travis/padosoft/laravel-support/master.svg?style=flat-square)](https://travis-ci.org/padosoft/laravel-support)
 [![Quality Score](https://img.shields.io/scrutinizer/g/padosoft/laravel-support.svg?style=flat-square)](https://scrutinizer-ci.com/g/padosoft/laravel-support)
 [![Total Downloads](https://img.shields.io/packagist/dt/padosoft/laravel-support.svg?style=flat-square)](https://packagist.org/packages/padosoft/laravel-support)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/236930cb-61cc-433f-b864-e5660f4533e6.svg?style=flat-square)](https://insight.sensiolabs.com/projects/a56f8c11-331f-4d3c-8724-77f55969f2f7)
 
 Laravel-support package is a collection of helpers and tools for Laravel projects.
 
