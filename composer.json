@@ -1,0 +1,47 @@
+{
+    "name": "padosoft/laravel-support",
+    "description": "support helpers, extended providers etc.. for laravel",
+    "keywords": [
+        "padosoft",
+        "laravel-support"
+    ],
+    "homepage": "https://github.com/padosoft/laravel-support",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lorenzo Padovani",
+            "email": "helpdesk@padosoft.com",
+            "homepage": "https://www.padosoft.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=7.0.0",
+        "illuminate/database": "^5.0",
+        "illuminate/support": "^5.0",
+        "illuminate/auth": "^5.3",
+        "illuminate/contracts": "^5.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.2",
+        "phpunit/phpunit": "^5.0",
+        "mockery/mockery": "^0.9.5",
+        "padosoft/test": "^0.2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Padosoft\\Laravel\\Support\\": "src"
+        },
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Padosoft\\Laravel\\Support\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
