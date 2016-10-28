@@ -31,7 +31,7 @@ class HelpersTest extends TestCase
      */
     public function locale()
     {
-        $original = $this->app->getLocale('en');
+        $original = $this->app->getLocale();
 
         $this->app->setLocale('en');
         $this->assertEquals('en', locale());

@@ -2,6 +2,10 @@
 
 All Notable changes to `laravel-support` will be documented in this file
 
+## 1.0.2 - 2016-10-28
+
+- Change locale() function internals.
+
 ## 1.0.1 - 2016-09-18
 
 - add composer.lock and update dependencies.

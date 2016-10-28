@@ -27,7 +27,11 @@ function validate($fields, $rules): bool
  */
 function locale(): string
 {
-    return app()->getLocale();
+    $locale = app()->getLocale();
+    if(!$locale){
+        return config('app.fallback_locale');
+    }
+    return $locale;
 }
 
 /**
