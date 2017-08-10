@@ -2,6 +2,10 @@
 
 All Notable changes to `laravel-support` will be documented in this file
 
+## 1.1.0 - 2017-08-11
+
+- queries(): add param string $dbConnectionName if empty use default connection, otherwise if you are multiple DB connections you may specify it.
+
 ## 1.0.3 - 2017-01-07
 
 - update swiftmailer/swiftmailer to fix Remote Code Execution vulnerability in v5.4.1

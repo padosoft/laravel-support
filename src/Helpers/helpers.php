@@ -80,14 +80,49 @@ if (!function_exists('current_user')) {
 }
 
 /**
- * Fetch log of database queries
+ * Fetch log of database queries and return executed queries
+ *
+ * Usage:
+ *
+ * You need enable query log by calling:
+ * \DB::enableQueryLog();
+ *
+ * If you have more than one DB connection you must specify it and Enables query log for my_connection
+ * \DB::connection('my_connection')->enableQueryLog();
+ *
+ * query the db
+ * \App\Articoli::query()->where('id','=',343242342)->get();
+ *
+ * then you can call queries() or in case of more than oine db call queries($last, 'my_connection')
+ * dd(queries($last));
+ *
+ * the output is an array:
+ * [
+ *   "query" => "select * from `negozi` where `id` = ?",
+ *   "bindings" => [343242342,],
+ *   "time" => 1.77,
+ *   "look" => "select * from `negozi` where `id` = 343242342",
+ * ]
+ *
+ * If you want to print only interpolated query
+ * echo queries(true)['look'] //output: "select * from `negozi` where `id` = 343242342"
+ *
+ * For performance and memory reasons, after get queries info, you can disable query log by excecute
+ * \DB::disableQueryLog();
+ * or in case of more db connections:
+ * \DB::connection('my_connection')->disableQueryLog();
  *
  * @param bool $last [false] - if true, only return last query
+ * @param string $dbConnectionName if empty use default connection, otherwise if you are multiple DB connections you may specify it.
  * @return array of queries
  */
-function queries($last = false)
+function queries($last = false, $dbConnectionName = '')
 {
-    $queries = \DB::getQueryLog();
+    if($dbConnectionName!=''){
+        $queries = \DB::connection($dbConnectionName)->getQueryLog();
+    }else{
+        $queries = \DB::getQueryLog();
+    }
 
     foreach ($queries as &$query) {
         $query['look'] = query_interpolate($query['query'], $query['bindings']);

@@ -64,22 +64,51 @@ echo $result; //update "users" set "remember_token" = 'dfsf234wdfsafsdfsdf' wher
 
 Using queries() helper:
 ``` php
+//You need enable query log by calling:
+\DB::enableQueryLog();
+
+//If you have more than one DB connection you must specify it and Enables query log for my_connection
+\DB::connection('my_connection')->enableQueryLog();
+ 
+//query the db
 User::first();
 User::first();
 User::first();
+
 $queries = queries();
-var_dump($result);
+dd($result);
+```
+
+The output is:
+``` php
+[
+  "query" => "select * from `negozi` where `id` = ?",
+  "bindings" => [343242342,],
+  "time" => 1.77,
+  "look" => "select * from `negozi` where `id` = 343242342",
+]
+```
+
+``` php
+//If you want to print interpolated queries and relative time
 foreach ($queries as $query) {
     echo 'e($query['look']) . "\t" . e($query['time']) . PHP_EOL;
 }
+
+//For performance and memory reasons, after get queries info, you can disable query log by excecute
+\DB::disableQueryLog();
+//or in case of more db connections:
+\DB::connection('my_connection')->disableQueryLog();
 ```
 
 Using query_table() helper:
 ``` php
+\DB::enableQueryLog();
 User::first();
 User::first();
 User::first();
 echo query_table();//print html table with queries
+\DB::disableQueryLog();
 ```
 
 Using current_user() helper:
