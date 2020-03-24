@@ -23,7 +23,7 @@ abstract class TestCase extends Orchestra
      */
     protected $testModel;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

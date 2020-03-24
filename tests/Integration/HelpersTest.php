@@ -11,9 +11,11 @@ class HelpersTest extends TestCase
 
     /**
      * @test
+     *
      * @param $fields
      * @param $rules
      * @param $expected
+     *
      * @dataProvider validateProvider
      */
     public function validate($fields, $rules, $expected)
@@ -92,7 +94,7 @@ class HelpersTest extends TestCase
 
         $query = 'update "users" set "remember_token" = ? where "id" = ?';
         $bindings = [
-            0 => ["1","1","1"],
+            0 => ["1", "1", "1"],
             1 => "1"
         ];
         $result = query_interpolate($query, $bindings);
@@ -109,7 +111,7 @@ class HelpersTest extends TestCase
         User::first();
         User::first();
         $query = queries();
-        $this->assertInternalType('array', $query);
+        $this->assertIsArray($query);
         $this->assertCount(3, $query);
         for ($i = 0; $i < count($query); $i++) {
             $this->assertArrayHasKey('look', $query[$i]);
@@ -130,10 +132,10 @@ class HelpersTest extends TestCase
         User::first();
         User::first();
         $html = query_table();
-        $this->assertInternalType('string', $html);
-        $this->assertContains('table', $html);
-        $this->assertContains('tr', $html);
-        $this->assertContains('select', $html);
+        $this->assertIsString($html);
+        $this->assertIsNotBool(strpos( $html,'table'));
+        $this->assertIsNotBool(strpos( $html,'tr'));
+        $this->assertIsNotBool(strpos( $html,'select'));
         \DB::disableQueryLog();
     }
 
@@ -149,15 +151,15 @@ class HelpersTest extends TestCase
 
         Auth::login($this->testUser);
         $user = current_user();
-        $this->assertInternalType('object', $user);
+        $this->assertIsObject($user);
         $this->assertEquals('test@user.com', $user->email);
 
         $user_id = current_user('id');
-        $this->assertInternalType('int', $user_id);
+        $this->assertIsInt($user_id);
         $this->assertEquals(1, $user_id);
 
         $user_email = current_user('email');
-        $this->assertInternalType('string', $user_email);
+        $this->assertIsString($user_email);
         $this->assertEquals('test@user.com', $user_email);
 
         Auth::logout();
@@ -187,7 +189,7 @@ class HelpersTest extends TestCase
         //$mock = $this->createMock('\App\User');
         //$mock = $this->createMock('\App\Models\User');
         //$mock = m::mock(TestModel::class);
-            //$mock = $this->createMock(User::class);
+        //$mock = $this->createMock(User::class);
         //$this->app['\App\Models\User'];
         //$this->app->instance('\App\Models\User', $mock);
         /*
