@@ -11,8 +11,8 @@ trait ValidationDataProvider
     public function validateProvider()
     {
         return [
-            'null, null ' => [null, null, 'Exception'],
-            '\'\', null ' => ['', null, 'ErrorException'],
+            'null, null ' => [null, null, 'TypeError'],
+            '\'\', null ' => ['', null, 'TypeError'],
             'null, \'\' ' => [null, '', true],
             '\'\', \'\'' => ['', '', true],
             '\'\', \' \'' => ['', ' ', true],
