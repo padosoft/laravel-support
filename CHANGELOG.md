@@ -1,7 +1,12 @@
 # Changelog
 
 All Notable changes to `laravel-support` will be documented in this file
+## 1.7.0 - 2025-04-07
 
+- Added support for laravel 12.x
+## 1.6.0 - 2021-05-20
+
+- Added support for laravel 11.x
 ## 1.3.0 - 2020-10-28
 
 - Added support for laravel 8.x

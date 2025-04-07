@@ -8,11 +8,11 @@ trait ValidationDataProvider
     /**
      * @return array
      */
-    public function validateProvider()
+    public static function validateProvider()
     {
         return [
-            'null, null ' => [null, null, 'TypeError'],
-            '\'\', null ' => ['', null, 'TypeError'],
+            'null, null ' => [null, null, 'ErrorException'],
+            '\'\', null ' => ['', null, 'ErrorException'],
             'null, \'\' ' => [null, '', true],
             '\'\', \'\'' => ['', '', true],
             '\'\', \' \'' => ['', ' ', true],
